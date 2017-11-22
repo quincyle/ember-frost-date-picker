@@ -1,0 +1,53 @@
+<h2>Ember Frost Date Picker</h2>
+<div class='row'>
+  <div class='item'>
+    <h3>Controller</h3>
+    {{code-snippet name="date_controller.js"}}
+  </div>
+  <div class='item column'>
+    <div class='item'>
+      <h3>Template</h3>
+      {{code-snippet name="date_template.hbs"}}
+    </div>
+    <div class='item'>
+      <div class='row'>
+        {{! BEGIN-SNIPPET date_template }}
+        <div class='item'>
+          <h3>Date</h3>
+          {{frost-date-picker
+            hook='date-picker'
+            currentValue=myDate
+            onSelect=(action 'onSelect')
+            onOpen=(action 'onOpen')
+            onClose=(action 'onClose')
+            onDraw=(action 'onDraw')
+            onError=(action 'onError')
+          }}
+          <h3>Time</h3>
+          {{frost-time-picker
+            hook='time-picker'
+            currentValue=myTime
+            onSelect=(action 'onSelect')
+            onError=(action 'onError')
+          }}
+          <h3>Originally Empty Date</h3>
+          {{frost-date-picker
+            hook='empty-date-picker'
+            onSelect=(action 'onSelectFromEmpty')
+            onOpen=(action 'onOpen')
+            onClose=(action 'onClose')
+            onDraw=(action 'onDraw')
+            onError=(action 'onError')
+          }}
+        </div>
+        <div class='item'>
+          <h3>Current Values</h3>
+          <li>Date: {{myDate}}</li>
+          <li>Time: {{myTime}}</li>
+          <li>Originally Empty Date: {{newDate}}</li>
+        </div>
+        {{! END-SNIPPET }}
+      </div>
+    </div>
+  </div>
+</div>

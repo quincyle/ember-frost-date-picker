@@ -1,0 +1,56 @@
+<h2> range picker </h2>
+<div class='row'>
+  <div class='item'>
+    <h3>Controller</h3>
+    {{code-snippet name="range_controller.js"}}
+  </div>
+  <div class='item column'>
+    <div class='item'>
+      <h3>Template</h3>
+      {{code-snippet name="range_template.hbs"}}
+    </div>
+    <div class='item'>
+      {{! BEGIN-SNIPPET range_template }}
+      <div class='row'>
+        <div class='item'>
+          <h3>Current Value</h3>
+          {{value.start}} <br>
+          {{value.end}}
+        </div>
+      </div>
+      <div class='row'>
+        <div class='item'>
+          <h3>Rendered</h3>
+
+          {{frost-range-picker
+            hook='myHook'
+            onSelect=(action 'onSelect')
+            onError=(action 'onError')
+            startTitle='Custom Start'
+            currentValue=value
+            endTitle='Custom End'
+            validator=(action 'myCustomValidator')
+          }}
+        </div>
+      </div>
+      {{! END-SNIPPET }}
+
+      <div class='row'>
+        <div class='item'>
+          <h3>Custom Validation Test</h3>
+          {{frost-toggle
+            hook='invertToggle'
+            value=isInverted
+            onClick=(mut isInverted)
+          }}
+          <p>
+            For demo purposes -
+            If state is on, it will use custom validator i.e <code>(action 'myCustomValidator')</code>
+            <br>
+            Otherwise it will use the normal validation
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

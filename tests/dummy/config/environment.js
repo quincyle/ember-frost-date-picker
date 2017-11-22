@@ -1,20 +1,34 @@
+/* eslint-env node */
 module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'dummy',
-    podModulePrefix: 'dummy/pods',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    rootURL: '/',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'ember-cli-notifications': {
+      includeFontAwesome: true
+    },
+
+    'ember-prop-types': {
+      spreadProperty: 'options',
+      throwErrors: true,
+      validateOnUpdate: true
     }
   }
 
@@ -28,7 +42,6 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/'
     ENV.locationType = 'none'
 
     // keep test console output quieter
@@ -38,8 +51,9 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
-  if (environment === 'production') {
-    ENV.baseURL = '/frost-date-picker'
+  if (environment === 'production' || environment === 'pages') {
+    ENV.locationType = 'hash'
+    ENV.rootURL = '/ember-frost-date-picker'
     ENV.isDemo = true
     ENV['ember-cli-mirage'] = {
       enabled: true
