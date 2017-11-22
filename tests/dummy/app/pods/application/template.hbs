@@ -1,8 +1,6 @@
-<div class="dummy-notification-container">
-  {{#each notifications as |notification|}}
-    {{notification-message notification=notification}}
-  {{/each}}
-</div>
+{{notification-container position="top-right"}}
+{{frost-navigation hook='myNavigation'}}
+{{nav-modal-outlet}}
 
 <div class="dummy-body">
   <div class="dummy-content">
